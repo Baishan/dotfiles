@@ -33,6 +33,7 @@ Plugin 'easymotion/vim-easymotion'
 Plugin 'tpope/vim-fugitive'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'roxma/vim-tmux-clipboard'
+Plugin 'majutsushi/tagbar'
 
 let g:gutentags_cache_dir = '~/.tags_cache'
 
@@ -210,3 +211,31 @@ autocmd VimEnter * NERDTree
 set tabstop=4
 set shiftwidth=4
 set expandtab
+set listchars=space:.
+
+map <Leader>. :CtrlPTag<cr>
+nmap <Leader>t :TagbarToggle<CR>
+let g:tagbar_type_elixir = {
+    \ 'ctagstype' : 'elixir',
+    \ 'kinds' : [
+        \ 'f:functions',
+        \ 'functions:functions',
+        \ 'c:callbacks',
+        \ 'd:delegates',
+        \ 'e:exceptions',
+        \ 'i:implementations',
+        \ 'a:macros',
+        \ 'o:operators',
+        \ 'm:modules',
+        \ 'p:protocols',
+        \ 'r:records',
+        \ 't:tests'
+    \ ]
+\ }
+let g:ctrlp_user_command = {
+  \ 'types': {
+    \ 1: ['.git', 'cd %s && git ls-files --cached --exclude-standard --others'],
+    \ 2: ['.hg', 'hg --cwd %s locate -I .'],
+    \ },
+  \ 'fallback': 'find %s -type f'
+  \ }
