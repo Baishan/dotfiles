@@ -20,7 +20,7 @@ Plugin 'tomtom/tcomment_vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'airblade/vim-gitgutter'
-" Plugin 'Valloric/YouCompleteMe'
+Plugin 'Valloric/YouCompleteMe'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'elixir-lang/vim-elixir'
 Plugin 'slashmili/alchemist.vim'
@@ -33,7 +33,6 @@ Plugin 'easymotion/vim-easymotion'
 Plugin 'tpope/vim-fugitive'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'roxma/vim-tmux-clipboard'
-Plugin 'majutsushi/tagbar'
 
 let g:gutentags_cache_dir = '~/.tags_cache'
 
@@ -197,7 +196,7 @@ if executable('ag')
   nmap <Leader>f <Plug>(easymotion-overwin-f)
 
   " s{char}{char} to move to {char}{char}
-  nmap <Leader>s <Plug>(easymotion-overwin-f2)
+  nmap s <Plug>(easymotion-overwin-f2)
 
   " Move to line
   map <Leader>L <Plug>(easymotion-bd-jk)
@@ -206,38 +205,3 @@ if executable('ag')
   " Move to word
   map  <Leader>w <Plug>(easymotion-bd-w)
   nmap <Leader>w <Plug>(easymotion-overwin-w)
-
-autocmd VimEnter * NERDTree
-set tabstop=4
-set shiftwidth=4
-set expandtab
-set listchars=space:.
-
-map <Leader>. :CtrlPTag<cr>
-nmap <Leader>t :TagbarToggle<CR>
-let g:tagbar_type_elixir = {
-    \ 'ctagstype' : 'elixir',
-    \ 'kinds' : [
-        \ 'f:functions',
-        \ 'functions:functions',
-        \ 'c:callbacks',
-        \ 'd:delegates',
-        \ 'e:exceptions',
-        \ 'i:implementations',
-        \ 'a:macros',
-        \ 'o:operators',
-        \ 'm:modules',
-        \ 'p:protocols',
-        \ 'r:records',
-        \ 't:tests'
-    \ ]
-\ }
-let g:ctrlp_user_command = {
-  \ 'types': {
-    \ 1: ['.git', 'cd %s && git ls-files --cached --exclude-standard --others'],
-    \ 2: ['.hg', 'hg --cwd %s locate -I .'],
-    \ },
-  \ 'fallback': 'find %s -type f'
-  \ }
-
-set relativenumber
