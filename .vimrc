@@ -34,7 +34,11 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'roxma/vim-tmux-clipboard'
 Plugin 'majutsushi/tagbar'
-
+Plugin 'posva/vim-vue'
+Plugin 'mattn/emmet-vim'
+Plugin 'jistr/vim-nerdtree-tabs'
+Plugin 'w0rp/ale'
+Plugin 'elmcast/elm-vim'
 let g:gutentags_cache_dir = '~/.tags_cache'
 
 
@@ -241,3 +245,5 @@ let g:ctrlp_user_command = {
   \ }
 
 set relativenumber
+let g:nerdtree_tabs_open_on_console_startup = 1
+let g:ale_javascript_eslint_options = "--rule 'indent: [\"error\", 4]'"
