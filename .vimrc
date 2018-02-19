@@ -13,6 +13,7 @@ Plugin 'VundleVim/Vundle.vim'
 " ------Plugins-------
 Plugin 'scrooloose/nerdtree'
 Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-abolish'
 Plugin 'gcmt/breeze.vim'
 Plugin 'kien/ctrlp.vim'
 Plugin 'SirVer/ultisnips'
@@ -29,16 +30,19 @@ Plugin 'ludovicchabant/vim-gutentags'
 Plugin 'sheerun/vim-polyglot'
 Plugin 'dunckr/vim-monokai-soda'
 Plugin 'crusoexia/vim-monokai'
+Plugin 'haya14busa/incsearch.vim'
 Plugin 'easymotion/vim-easymotion'
+Plugin 'haya14busa/incsearch-easymotion.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'roxma/vim-tmux-clipboard'
 Plugin 'majutsushi/tagbar'
-Plugin 'posva/vim-vue'
+"Plugin 'posva/vim-vue'
 Plugin 'mattn/emmet-vim'
 Plugin 'jistr/vim-nerdtree-tabs'
-Plugin 'w0rp/ale'
+" Plugin 'w0rp/ale'
 Plugin 'elmcast/elm-vim'
+Plugin 'jeetsukumaran/vim-buffergator'
 let g:gutentags_cache_dir = '~/.tags_cache'
 
 
@@ -51,10 +55,10 @@ filetype plugin indent on
 
 """"""""
 if has('autocmd')
-  filetype plugin indent on
+    filetype plugin indent on
 endif
 if has('syntax') && !exists('g:syntax_on')
-  syntax enable
+    syntax enable
 endif
 
 " Use :help 'option' to see the documentation for the given option.
@@ -74,7 +78,7 @@ set ttimeoutlen=50
 set incsearch
 " Use <C-L> to clear the highlighting of :set hlsearch.
 if maparg('<C-L>', 'n') ==# ''
-  nnoremap <silent> <C-L> :nohlsearch<CR><C-L>
+    nnoremap <silent> <C-L> :nohlsearch<CR><C-L>
 endif
 
 set laststatus=2
@@ -101,7 +105,7 @@ map Q gq
 
 " In many terminal emulators the mouse works just fine, thus enable it.
 if has('mouse')
-  set mouse=a
+    set mouse=a
 endif
 
 " do not history when leavy buffer
@@ -183,33 +187,50 @@ inoremap <C-k>  <Esc>:tabclose<CR>i
 " lazy ':'
 map \ :
 
-let mapleader = ','
+let mapleader = ' '
 nnoremap <Leader>p :set paste<CR>
 nnoremap <Leader>o :set nopaste<CR>
 noremap  <Leader>g :GitGutterToggle<CR>
 
 " this machine config
 if filereadable(expand("~/.vimrc.local"))
-  source ~/.vimrc.local
+    source ~/.vimrc.local
 endif
 
 if executable('ag')
-    let g:ackprg = 'ag --vimgrep'
-  endif
-  " <Leader>f{char} to move to {char}
-  map  <Leader>f <Plug>(easymotion-bd-f)
-  nmap <Leader>f <Plug>(easymotion-overwin-f)
+    let g:ackprg = 'ag --mmap --vimgrep'
+endif
+" <Leader>f{char} to move to {char}
+map  <Leader>f <Plug>(easymotion-bd-f)
+nmap <Leader>f <Plug>(easymotion-overwin-f)
 
-  " s{char}{char} to move to {char}{char}
-  nmap <Leader>s <Plug>(easymotion-overwin-f2)
+" s{char}{char} to move to {char}{char}
+nmap <Leader>s <Plug>(easymotion-overwin-f2)
 
-  " Move to line
-  map <Leader>L <Plug>(easymotion-bd-jk)
-  nmap <Leader>L <Plug>(easymotion-overwin-line)
+" Move to line
+map <Leader>L <Plug>(easymotion-bd-jk)
+nmap <Leader>L <Plug>(easymotion-overwin-line)
 
-  " Move to word
-  map  <Leader>w <Plug>(easymotion-bd-w)
-  nmap <Leader>w <Plug>(easymotion-overwin-w)
+" Move to word
+map  <Leader>w <Plug>(easymotion-bd-w)
+nmap <Leader>w <Plug>(easymotion-overwin-w)
+
+map <Leader>l <Plug>(easymotion-lineforward)
+map <Leader>j <Plug>(easymotion-j)
+map <Leader>k <Plug>(easymotion-k)
+map <Leader>h <Plug>(easymotion-linebackward)
+map <TAB> <Plug>(easymotion-s)
+
+"incsearch
+" map /  <Plug>(incsearch-forward)
+" map ?  <Plug>(incsearch-backward)
+" map g/ <Plug>(incsearch-stay)
+
+
+"incsearch easymotion
+map / <Plug>(incsearch-easymotion-/)
+map ? <Plug>(incsearch-easymotion-?)
+map g/ <Plug>(incsearch-easymotion-stay)
 
 autocmd VimEnter * NERDTree
 set tabstop=4
@@ -218,31 +239,31 @@ set expandtab
 set listchars=space:.
 
 map <Leader>. :CtrlPTag<cr>
-nmap <Leader>t :TagbarToggle<CR>
+map ,t :TagbarToggle<CR>
 let g:tagbar_type_elixir = {
-    \ 'ctagstype' : 'elixir',
-    \ 'kinds' : [
-        \ 'f:functions',
-        \ 'functions:functions',
-        \ 'c:callbacks',
-        \ 'd:delegates',
-        \ 'e:exceptions',
-        \ 'i:implementations',
-        \ 'a:macros',
-        \ 'o:operators',
-        \ 'm:modules',
-        \ 'p:protocols',
-        \ 'r:records',
-        \ 't:tests'
-    \ ]
-\ }
+            \ 'ctagstype' : 'elixir',
+            \ 'kinds' : [
+            \ 'f:functions',
+            \ 'functions:functions',
+            \ 'c:callbacks',
+            \ 'd:delegates',
+            \ 'e:exceptions',
+            \ 'i:implementations',
+            \ 'a:macros',
+            \ 'o:operators',
+            \ 'm:modules',
+            \ 'p:protocols',
+            \ 'r:records',
+            \ 't:tests'
+            \ ]
+            \ }
 let g:ctrlp_user_command = {
-  \ 'types': {
-    \ 1: ['.git', 'cd %s && git ls-files --cached --exclude-standard --others'],
-    \ 2: ['.hg', 'hg --cwd %s locate -I .'],
-    \ },
-  \ 'fallback': 'find %s -type f'
-  \ }
+            \ 'types': {
+            \ 1: ['.git', 'cd %s && git ls-files --cached --exclude-standard --others'],
+            \ 2: ['.hg', 'hg --cwd %s locate -I .'],
+            \ },
+            \ 'fallback': 'find %s -type f'
+            \ }
 
 set relativenumber
 let g:nerdtree_tabs_open_on_console_startup = 1
