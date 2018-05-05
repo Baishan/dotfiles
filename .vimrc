@@ -268,3 +268,4 @@ let g:ctrlp_user_command = {
 set relativenumber
 let g:nerdtree_tabs_open_on_console_startup = 1
 let g:ale_javascript_eslint_options = "--rule 'indent: [\"error\", 4]'"
+set nolist

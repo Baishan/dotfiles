@@ -13,8 +13,8 @@ call plug#end()
 set runtimepath+=~/.vim,~/.vim/after
 set packpath+=~/.vim
 source ~/.vimrc
-let g:python_host_prog = '/usr/local/bin/python2'
-let g:python3_host_prog = '/usr/local/bin/python3'
+let g:python_host_prog = '/usr/bin/python2'
+let g:python3_host_prog = '/usr/bin/python3'
 set clipboard=unnamed
 autocmd VimEnter * NERDTree
 let g:deoplete#enable_at_startup = 1
