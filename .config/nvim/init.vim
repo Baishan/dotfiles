@@ -32,6 +32,7 @@ inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 " tern
 autocmd FileType javascript nnoremap <silent> <buffer> gb :TernDef<CR>
 noremap <Leader>a :Neoformat<CR>
+noremap <c-[> :po<CR>
 
 let g:neoformat_javascript_jsbeautify =  {
             \ 'exe': 'js-beautify',
