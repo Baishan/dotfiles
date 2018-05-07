@@ -9,6 +9,8 @@ Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'}
 Plug 'sbdchd/neoformat'
 Plug 'ensime/ensime-vim', { 'do': ':UpdateRemotePlugins' } 
 Plug 'neomake/neomake'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 
 call plug#end()
 
@@ -57,3 +59,4 @@ let g:neomake_verbose=3
 
  autocmd BufWritePost *.scala silent :EnTypeCheck
  nnoremap <localleader>t :EnType<CR>
+ map <C-p> :Files<CR>
