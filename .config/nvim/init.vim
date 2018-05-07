@@ -8,6 +8,7 @@ Plug 'tpope/vim-repeat'
 Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'}
 Plug 'sbdchd/neoformat'
 Plug 'ensime/ensime-vim', { 'do': ':UpdateRemotePlugins' } 
+Plug 'neomake/neomake'
 
 call plug#end()
 
@@ -39,4 +40,20 @@ let g:neoformat_javascript_jsbeautify =  {
             \ 'args': ['-b collapse-preserve-inline', '--indent-size 4'],
             \ 'stdin': 1,
             \ }
+let g:neomake_sbt_maker = {
+      \ 'exe': 'sbt',
+      \ 'args': ['-Dsbt.log.noformat=true', 'compile'],
+      \ 'append_file': 0,
+      \ 'auto_enabled': 1,
+      \ 'output_stream': 'stdout',
+      \ 'errorformat':
+          \ '%E[%trror]\ %f:%l:\ %m,' .
+            \ '%-Z[error]\ %p^,' .
+            \ '%-C%.%#,' .
+            \ '%-G%.%#'
+     \ }
+let g:neomake_enabled_makers = ['sbt']
+let g:neomake_verbose=3
 
+ autocmd BufWritePost *.scala silent :EnTypeCheck
+ nnoremap <localleader>t :EnType<CR>

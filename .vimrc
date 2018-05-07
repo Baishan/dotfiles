@@ -43,6 +43,7 @@ Plugin 'jistr/vim-nerdtree-tabs'
 " Plugin 'w0rp/ale'
 Plugin 'elmcast/elm-vim'
 Plugin 'jeetsukumaran/vim-buffergator'
+Plugin 'derekwyatt/vim-scala'
 let g:gutentags_cache_dir = '~/.tags_cache'
 
 
