@@ -198,7 +198,9 @@ if filereadable(expand("~/.vimrc.local"))
     source ~/.vimrc.local
 endif
 
-if executable('ag')
+if executable('rg')
+    let g:ackprg = 'rg --vimgrep --no-heading'
+elseif  executable('ag')
     let g:ackprg = 'ag --mmap --vimgrep'
 endif
 " <Leader>f{char} to move to {char}
