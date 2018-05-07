@@ -16,7 +16,6 @@ Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-abolish'
 Plugin 'gcmt/breeze.vim'
 " Plugin 'kien/ctrlp.vim'
-Plugin 'SirVer/ultisnips'
 Plugin 'tomtom/tcomment_vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
@@ -45,7 +44,6 @@ Plugin 'elmcast/elm-vim'
 Plugin 'jeetsukumaran/vim-buffergator'
 Plugin 'derekwyatt/vim-scala'
 let g:gutentags_cache_dir = '~/.tags_cache'
-
 
 " Color Themes
 Plugin 'colors'
@@ -137,12 +135,6 @@ nnoremap <S-n> :NERDTreeToggle<CR>
 " CtrlP
 set wildignore+=*/.git/*,*/.hg/*,*/.svn/*
 
-" Ultisnip
-" NOTE: <f1> otherwise it overrides <tab> forever
-let g:UltiSnipsExpandTrigger="<f1>"
-let g:UltiSnipsJumpForwardTrigger="<f1>"
-let g:UltiSnipsJumpBackwardTrigger="<c-k>"
-let g:did_UltiSnips_vim_after = 1
 
 " vim-airline
 let g:airline#extensions#tabline#enabled = 1
@@ -182,8 +174,8 @@ nnoremap <C-n>  :tabnext<CR>
 inoremap <C-n>  <Esc>:tabnext<CR>i
 nnoremap <C-t>  :tabnew<CR>
 inoremap <C-t>  <Esc>:tabnew<CR>i
-nnoremap <C-k>  :tabclose<CR>
-inoremap <C-k>  <Esc>:tabclose<CR>i
+nnoremap <C-q>  :tabclose<CR>
+inoremap <C-q>  <Esc>:tabclose<CR>i
 
 " lazy ':'
 map \ :
@@ -200,7 +192,7 @@ endif
 
 if executable('rg')
     let g:ackprg = 'rg --vimgrep --no-heading'
-elseif  executable('ag')
+elseif executable('ag')
     let g:ackprg = 'ag --mmap --vimgrep'
 endif
 " <Leader>f{char} to move to {char}
@@ -269,6 +261,6 @@ let g:ctrlp_user_command = {
             \ }
 
 set relativenumber
-let g:nerdtree_tabs_open_on_console_startup = 1
+let g:nerdtree_tab_open_on_console_starup = 1
 let g:ale_javascript_eslint_options = "--rule 'indent: [\"error\", 4]'"
 set nolist
