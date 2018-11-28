@@ -36,7 +36,7 @@ fi
 # Ensure path arrays do not contain duplicates.
 typeset -gU cdpath fpath mailpath path
 
-# Set the the list of directories that cd searches.
+# Set the list of directories that cd searches.
 # cdpath=(
 #   $cdpath
 # )
@@ -62,6 +62,7 @@ if (( $#commands[(i)lesspipe(|.sh)] )); then
   export LESSOPEN="| /usr/bin/env $commands[(i)lesspipe(|.sh)] %s 2>&-"
 fi
 
+
 #
 # Temporary Files
 #
@@ -73,3 +74,5 @@ fi
 TMPPREFIX="${TMPDIR%/}/zsh"
 _byobu_sourced=1 . /usr/local/Cellar/byobu/5.119/bin/byobu-launch 2>/dev/null || true
 alias gpsup='git push --set-upstream origin $(git_current_branch)'
+alias hstart="/usr/local/Cellar/hadoop/3.0.0/sbin/start-all.sh"
+alias hstop="/usr/local/Cellar/hadoop/3.0.0/sbin/stop-all.sh"
