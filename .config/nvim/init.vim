@@ -7,8 +7,6 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'}
 Plug 'sbdchd/neoformat'
-Plug 'ensime/ensime-vim', { 'do': ':UpdateRemotePlugins' } 
-Plug 'neomake/neomake'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
@@ -26,6 +24,7 @@ if !exists('g:deoplete#omni#input_patterns')
   let g:deoplete#omni#input_patterns = {}
 endif
 let g:deoplete#omni#input_patterns.scala='[^. *\t]\.\w*'
+let g:deoplete#sources = get(g:,'deoplete#sources',{})
 let g:deoplete#sources._=['buffer', 'member', 'tag', 'file', 'omni', 'ultisnips']
 " let g:deoplete#disable_auto_complete = 1
 autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
@@ -54,10 +53,7 @@ let g:neoformat_javascript_jsbeautify =  {
 "             \ '%-C%.%#,' .
 "             \ '%-G%.%#'
 "      \ }
-let g:neomake_enabled_makers = ['sbt']
-let g:neomake_verbose=3
 
 "  autocmd BufWritePost *.scala silent :EnTypeCheck
- nnoremap <localleader>t :EnType<CR>
  map <C-p> :Files<CR>
- autocmd InsertLeave,TextChanged * update | Neomake! sbt
+"  autocmd InsertLeave,TextChanged * update | Neomake! sbt

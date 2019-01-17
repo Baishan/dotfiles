@@ -9,3 +9,13 @@
 if [[ "$SHLVL" -eq 1 && ! -o LOGIN && -s "${ZDOTDIR:-$HOME}/.zprofile" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprofile"
 fi
+export PATH=${PATH}::/usr/local/spark/bin
+export JAVA_HOME=/usr/o
+
+export JAVA_HOME=/usr/jdk1.8.0_171
+export JRE_HOME=/usr/jdk1.8.0_171/jre/
+export PATH=$JAVA_HOME/bin:$PATH
+alias vim=nvim
+export PATH="/home/brian/.pyenv/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"

@@ -11,8 +11,6 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
 fi
 
 # Customize to your needs...
-export JAVA_HOME="`/usr/libexec/java_home -v 1.8`"
-export PATH=$PATH:$JAVA_HOME/bin
-export PATH="$PATH:$HOME/.rvm/bin"
-source $HOME/.rvm/scripts/rvm
 export EDITOR="$VISUAL"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
