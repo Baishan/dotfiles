@@ -73,3 +73,5 @@ fi
 TMPPREFIX="${TMPDIR%/}/zsh"
 _byobu_sourced=1 . /usr/local/Cellar/byobu/5.119/bin/byobu-launch 2>/dev/null || true
 alias gpsup='git push --set-upstream origin $(git_current_branch)'
+
+export PATH="$HOME/.cargo/bin:$PATH"
