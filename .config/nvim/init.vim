@@ -9,6 +9,8 @@ Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'}
 Plug 'sbdchd/neoformat'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+Plug 'sebastianmarkow/deoplete-rust'
+Plug 'racer-rust/vim-racer'
 
 call plug#end()
 
@@ -25,7 +27,9 @@ if !exists('g:deoplete#omni#input_patterns')
 endif
 let g:deoplete#omni#input_patterns.scala='[^. *\t]\.\w*'
 let g:deoplete#sources = get(g:,'deoplete#sources',{})
-let g:deoplete#sources._=['buffer', 'member', 'tag', 'file', 'omni', 'ultisnips']
+let g:deoplete#sources = {'_': ['buffer', 'member', 'tag', 'file', 'omni', 'ultisnips'], 'rust': ['ale', 'racer'] }
+let g:deoplete#sources#rust#racer_binary='/home/brian/.cargo/bin/racer'
+let g:deoplete#sources#rust#racer_source_path='/home/brian/.cargo/bin/racer'
 " let g:deoplete#disable_auto_complete = 1
 autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 
@@ -41,18 +45,7 @@ let g:neoformat_javascript_jsbeautify =  {
             \ 'args': ['-b collapse-preserve-inline', '--indent-size 4'],
             \ 'stdin': 1,
             \ }
-" let g:neomake_sbt_maker = {
-"       \ 'exe': 'sbt',
-"       \ 'args': ['-Dsbt.log.noformat=true', 'compile'],
-"       \ 'append_file': 0,
-"       \ 'auto_enabled': 1,
-"       \ 'output_stream': 'stdout',
-"       \ 'errorformat':
-"           \ '%E[%trror]\ %f:%l:\ %m,' .
-"             \ '%-Z[error]\ %p^,' .
-"             \ '%-C%.%#,' .
-"             \ '%-G%.%#'
-"      \ }
+
 
 "  autocmd BufWritePost *.scala silent :EnTypeCheck
  map <C-p> :Files<CR>
