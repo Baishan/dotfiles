@@ -13,7 +13,7 @@ Plugin 'VundleVim/Vundle.vim'
 " ------Plugins-------
 Plugin 'scrooloose/nerdtree'
 Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-abolish'
+"Plugin 'tpope/vim-abolish'
 Plugin 'gcmt/breeze.vim'
 " Plugin 'kien/ctrlp.vim'
 Plugin 'tomtom/tcomment_vim'
@@ -21,9 +21,9 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'airblade/vim-gitgutter'
 " Plugin 'Valloric/YouCompleteMe'
-Plugin 'davidhalter/jedi-vim'
+" Plugin 'davidhalter/jedi-vim'
 Plugin 'elixir-lang/vim-elixir'
-Plugin 'slashmili/alchemist.vim'
+" Plugin 'slashmili/alchemist.vim'
 Plugin 'mileszs/ack.vim'
 Plugin 'ludovicchabant/vim-gutentags'
 " Plugin 'sheerun/vim-polyglot'
@@ -40,7 +40,7 @@ Plugin 'majutsushi/tagbar'
 Plugin 'mattn/emmet-vim'
 Plugin 'jistr/vim-nerdtree-tabs'
 " Plugin 'w0rp/ale'
-Plugin 'elmcast/elm-vim'
+" Plugin 'elmcast/elm-vim'
 Plugin 'jeetsukumaran/vim-buffergator'
 Plugin 'derekwyatt/vim-scala'
 let g:gutentags_cache_dir = '~/.tags_cache'
@@ -49,7 +49,7 @@ let g:gutentags_cache_dir = '~/.tags_cache'
 Plugin 'colors'
 
 call vundle#end()
-colorscheme Monokai
+colorscheme monokai
 filetype plugin indent on
 
 """"""""
@@ -130,7 +130,7 @@ set completeopt=menuone,longest,preview
 "
 
 " NERDTree
-nnoremap <S-n> :NERDTreeToggle<CR>
+nnoremap <S-n> :NERDTreeTabsToggle<CR>
 
 " CtrlP
 set wildignore+=*/.git/*,*/.hg/*,*/.svn/*
@@ -148,8 +148,8 @@ let g:airline_powerline_fonts = 1
 " Find
 map <C-f> /
 " indent / deindent after selecting the text with (⇧ v), (.) to repeat.
-vnoremap <Tab> >
-vnoremap <S-Tab> <
+" vnoremap <Tab> >
+" vnoremap <S-Tab> <
 " comment / decomment & normal comment behavior
 vmap <C-m> gc
 " Disable tComment to escape some entities
@@ -185,10 +185,10 @@ nnoremap <Leader>p :set paste<CR>
 nnoremap <Leader>o :set nopaste<CR>
 noremap  <Leader>g :GitGutterToggle<CR>
 
-" this machine config
-if filereadable(expand("~/.vimrc.local"))
-    source ~/.vimrc.local
-endif
+" " this machine config
+" if filereadable(expand("~/.vimrc.local"))
+"     source ~/.vimrc.local
+" endif
 
 if executable('rg')
     let g:ackprg = 'rg --vimgrep --no-heading'
