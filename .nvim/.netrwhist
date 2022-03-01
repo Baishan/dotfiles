@@ -1,7 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =5
-let g:netrw_dirhist_1='/Users/bcullen/Projects/monocle-model-server'
-let g:netrw_dirhist_2='/Users/bcullen/Projects/monocle-model-server/apps'
-let g:netrw_dirhist_3='/Users/bcullen/Projects/monocle-model-server/apps/tagger'
-let g:netrw_dirhist_4='/Users/bcullen/Projects/monocle-model-server/apps'
-let g:netrw_dirhist_5='/Users/bcullen/Projects/monocle-model-server'
