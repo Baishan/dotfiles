@@ -21,10 +21,15 @@ lvim.leader = "space"
 lvim.keys.normal_mode["<C-s>"] = ":update<cr>"
 lvim.keys.insert_mode["<C-s>"] = "<ESC>:update<cr>"
 lvim.keys.visual_mode["<C-s>"] = "<C-C>:update<cr>"
-
+lvim.keys.insert_mode["<A-j>"] = false
+lvim.keys.insert_mode["<A-k>"] = false
+lvim.keys.normal_mode["<A-j>"] = false
+lvim.keys.normal_mode["<A-k>"] = false
+lvim.keys.visual_block_mode["<A-j>"] = false
+lvim.keys.visual_block_mode["<A-k>"] = false
 lvim.builtin.dap.active = true
--- unmap a default keymapping
 -- lvim.keys.normal_mode["<C-Up>"] = false
+-- unmap a default keymapping
 -- edit a default keymapping
 -- lvim.keys.normal_mode["<C-q>"] = ":q<cr>"
 
@@ -153,8 +158,8 @@ lvim.plugins = {
   { "folke/trouble.nvim" },
   { "ggandor/leap.nvim" },
   { "tpope/vim-surround" },
-  { "crusoexia/vim-monokai" }
-
+  { "crusoexia/vim-monokai" },
+  { "christoomey/vim-tmux-navigator" }
 }
 
 require('leap').set_default_keymaps()
