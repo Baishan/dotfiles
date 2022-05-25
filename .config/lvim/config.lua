@@ -191,7 +191,7 @@ require('dap-python').setup('~/.virtualenvs/debugpy/bin/python')
 require('leap').set_default_keymaps()
 require('dap-go').setup()
 require("dapui").setup()
-
+require('telescope').load_extension('dap')
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
 -- lvim.autocommands.custom_groups = {
 --   { "BufWinEnter", "*.lua", "setlocal ts=8 sw=8" },
