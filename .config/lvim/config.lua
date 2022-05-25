@@ -27,7 +27,29 @@ lvim.keys.normal_mode["<A-j>"] = false
 lvim.keys.normal_mode["<A-k>"] = false
 lvim.keys.visual_block_mode["<A-j>"] = false
 lvim.keys.visual_block_mode["<A-k>"] = false
+lvim.keys.normal_mode["<F5>"] = "<cmd>lua require'dap'.continue()<cr>"
+lvim.keys.normal_mode["<S-F5>"] = "<cmd>lua require'dap'.disconnect()<cr>"
+lvim.keys.normal_mode["<F6>"] = "<cmd>lua require'dap'.pause.toggle()<cr>"
+lvim.keys.normal_mode["<F7>"] = "<cmd>lua require'dapui'.toggle()<cr>"
+lvim.keys.normal_mode["<F8>"] = "<cmd>lua require'dap'.run_to_cursor()<cr>"
+lvim.keys.normal_mode["<F9>"] = "<cmd>lua require'dap'.toggle_breakpoint()<cr>"
+lvim.keys.normal_mode["<F10>"] = "<cmd>lua require'dap'.step_over()<cr>"
+lvim.keys.normal_mode["<S-F10>"] = "<cmd>lua require'dap'.step_back()<cr>"
+lvim.keys.normal_mode["<F11>"] = "<cmd>lua require'dap'.step_into()<cr>"
+lvim.keys.normal_mode["<S-F11>"] = "<cmd>lua require'dap'.step_out()<cr>"
 lvim.builtin.dap.active = true
+
+local dap, dapui = require("dap"), require("dapui")
+dap.listeners.after.event_initialized["dapui_config"] = function()
+  dapui.open()
+end
+dap.listeners.before.event_terminated["dapui_config"] = function()
+  dapui.close()
+end
+dap.listeners.before.event_exited["dapui_config"] = function()
+  dapui.close()
+end 
+
 -- lvim.keys.normal_mode["<C-Up>"] = false
 -- unmap a default keymapping
 -- edit a default keymapping
@@ -160,10 +182,16 @@ lvim.plugins = {
   { "tpope/vim-surround" },
   { "crusoexia/vim-monokai" },
   { "christoomey/vim-tmux-navigator" },
-  { "mfussenegger/nvim-dap-python" }
+  { "mfussenegger/nvim-dap-python" },
+  { "leoluz/nvim-dap-go" },
+  { "rcarriga/nvim-dap-ui" }
 }
- require('dap-python').setup('~/.virtualenvs/debugpy/bin/python')
+ 
+require('dap-python').setup('~/.virtualenvs/debugpy/bin/python')
 require('leap').set_default_keymaps()
+require('dap-go').setup()
+require("dapui").setup()
+
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
 -- lvim.autocommands.custom_groups = {
 --   { "BufWinEnter", "*.lua", "setlocal ts=8 sw=8" },
