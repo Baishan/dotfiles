@@ -27,17 +27,33 @@ lvim.keys.normal_mode["<A-j>"] = false
 lvim.keys.normal_mode["<A-k>"] = false
 lvim.keys.visual_block_mode["<A-j>"] = false
 lvim.keys.visual_block_mode["<A-k>"] = false
-lvim.keys.normal_mode["<F5>"] = "<cmd>lua require'dap'.continue()<cr>"
-lvim.keys.normal_mode["<S-F5>"] = "<cmd>lua require'dap'.disconnect()<cr>"
-lvim.keys.normal_mode["<F6>"] = "<cmd>lua require'dap'.pause.toggle()<cr>"
-lvim.keys.normal_mode["<F7>"] = "<cmd>lua require'dapui'.toggle()<cr>"
-lvim.keys.normal_mode["<F8>"] = "<cmd>lua require'dap'.run_to_cursor()<cr>"
-lvim.keys.normal_mode["<F9>"] = "<cmd>lua require'dap'.toggle_breakpoint()<cr>"
-lvim.keys.normal_mode["<F10>"] = "<cmd>lua require'dap'.step_over()<cr>"
-lvim.keys.normal_mode["<S-F10>"] = "<cmd>lua require'dap'.step_back()<cr>"
-lvim.keys.normal_mode["<F11>"] = "<cmd>lua require'dap'.step_into()<cr>"
-lvim.keys.normal_mode["<S-F11>"] = "<cmd>lua require'dap'.step_out()<cr>"
 lvim.builtin.dap.active = true
+
+
+function TableConcat(t1,t2)
+   for i=1,#t2 do
+      t1[#t1+1] = t2[i]
+   end
+   return t1
+end
+
+lvim.lsp.buffer_mappings.normal_mode["<C-F>"] = { "<cmd>lua require'telescope.builtin'.current_buffer_fuzzy_find()<cr>", "Find in buffer"}
+lvim.lsp.buffer_mappings.normal_mode["<F5>"] = { "<cmd>lua require'dap'.continue()<cr>", "Debug Continue"}
+lvim.lsp.buffer_mappings.normal_mode["<S-F5>"] = { "<cmd>lua require'dap'.disconnect()<cr>", "Debug Disconnect"}
+lvim.lsp.buffer_mappings.normal_mode["<F6>"] = { "<cmd>lua require'dap'.pause.toggle()<cr>", "Debug Pause"}
+lvim.lsp.buffer_mappings.normal_mode["<F7>"] = { "<cmd>lua require'dapui'.toggle()<cr>", "Debug UI Toggle"}
+lvim.lsp.buffer_mappings.normal_mode["<F8>"] = { "<cmd>lua require'dap'.run_to_cursor()<cr>", "Debug Run To Cursor"}
+lvim.lsp.buffer_mappings.normal_mode["<F9>"] = { "<cmd>lua require'dap'.toggle_breakpoint()<cr>", "Debug Breakpoint"}
+lvim.lsp.buffer_mappings.normal_mode["<F10>"] = { "<cmd>lua require'dap'.step_over()<cr>", "Debug Step Over"}
+lvim.lsp.buffer_mappings.normal_mode["<S-F10>"] = { "<cmd>lua require'dap'.step_back()<cr>", "Debug Step Back"}
+lvim.lsp.buffer_mappings.normal_mode["<F11>"] = { "<cmd>lua require'dap'.step_into()<cr>", "Debug Step Into"}
+lvim.lsp.buffer_mappings.normal_mode["<S-F11>"] = { "<cmd>lua require'dap'.step_out()<cr>", "Debug Step Out"}
+lvim.lsp.buffer_mappings.normal_mode["<space>dv"] = { "<cmd>Telescope dap variables<cr>", "Variables" }
+lvim.lsp.buffer_mappings.normal_mode["<space>df"] = { "<cmd>Telescope dap frames<cr>", "Frames" }
+lvim.lsp.buffer_mappings.normal_mode["<space>db"] = { "<cmd>Telescope dap breakpoints<cr>", "Breakpoints" }
+lvim.lsp.buffer_mappings.normal_mode["<space>dc"] = { "<cmd>Telescope dap commands<cr>", "Commands" }
+lvim.lsp.buffer_mappings.normal_mode["gr"] = { "<cmd>lua require'telescope.builtin'.lsp_references()<cr>", "References" }
+
 
 local dap, dapui = require("dap"), require("dapui")
 dap.listeners.after.event_initialized["dapui_config"] = function()
@@ -186,7 +202,20 @@ lvim.plugins = {
   { "leoluz/nvim-dap-go" },
   { "rcarriga/nvim-dap-ui" }
 }
- 
+
+vim.g.clipboard = {
+  name = "win32yank-wsl",
+  copy = {
+    ["+"] = "win32yank.exe -i --crlf",
+    ["*"] = "win32yank.exe -i --crlf"
+  },
+  paste = {
+    ["+"] = "win32yank.exe -o --lf",
+    ["*"] = "win32yank.exe -o --lf"
+  },
+  cache_enable = 0,
+}
+
 require('dap-python').setup('~/.virtualenvs/debugpy/bin/python')
 require('leap').set_default_keymaps()
 require('dap-go').setup()
