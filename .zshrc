@@ -26,6 +26,8 @@ alias vim=nvim
 . $HOME/.asdf/asdf.sh
 # append completions to fpath
 fpath=(${ASDF_DIR}/completions $fpath)
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
 # initialise completions with ZSH's compinit
 autoload -Uz compinit && compinit
 
