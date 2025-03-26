@@ -8,5 +8,5 @@
 	path = zshrc/.zsh/zsh-syntax-highlighting
 	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
 [submodule "zshrc/.zsh/zsh-autosuggestions"]
-  path = zshrc/.zsh/zsh-autosuggestions
-  url = https://github.com/zsh-users/zsh-autosuggestions.git
+	path = zshrc/.zsh/zsh-autosuggestions
+	url = https://github.com/zsh-users/zsh-autosuggestions.git

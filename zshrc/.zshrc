@@ -12,7 +12,7 @@ fpath=(${ASDF_DIR}/completions $fpath)
 # # initialise completions with ZSH's compinit
 # autoload -Uz compinit && compinit
 
-alias vim='NVIM_APPNAME=nvim-brian nvim'
+alias vim='nvim'
 alias cat=batcat
 alias czf='fzf --preview "batcat --color=always --style=numbers --line-range=:500 {}"'
 
@@ -27,7 +27,6 @@ source ~/.powerlevel10k/powerlevel10k.zsh-theme
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.zsh/history/init.zsh
 source ~/.zsh/directory/init.zsh
@@ -42,3 +41,4 @@ export FZF_CTRL_T_OPTS="
 export FZF_ALT_C_OPTS="
   --walker-skip .git,node_modules,target
   --preview 'tree -C {}'"
+
