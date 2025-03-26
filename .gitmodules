@@ -1,12 +1,12 @@
 [submodule "fzf"]
 	path = fzf
 	url = https://github.com/junegunn/fzf.git
-[submodule "powerlevel10k"]
-	path = powerlevel10k
+[submodule "zshrc/.powerlevel10k"]
+	path = zshrc/.powerlevel10k
 	url = https://github.com/romkatv/powerlevel10k.git
-[submodule ".zsh/zsh-syntax-highlighting"]
-	path = .zsh/zsh-syntax-highlighting
+[submodule "zshrc/.zsh/zsh-syntax-highlighting"]
+	path = zshrc/.zsh/zsh-syntax-highlighting
 	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
-[submodule ".zsh/zsh-autosuggestions"]
-    path = .zsh/zsh-autosuggestions
+[submodule "zshrc/.zsh/zsh-autosuggestions"]
+    path = zshrc/.zsh/zsh-autosuggestions
     url = https://github.com/zsh-users/zsh-autosuggestions.git
