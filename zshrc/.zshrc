@@ -27,10 +27,9 @@ source ~/.powerlevel10k/powerlevel10k.zsh-theme
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source ~/.zsh/history/init.zsh
-source ~/.zsh/directory/init.zsh
-source ~/.zsh/completion/init.zsh
+source ~/.zsh/init.zsh
+
+[[ ! -f ~/.zshenv]] || source ~/.zshenv
 
 
 export FZF_CTRL_T_OPTS="
@@ -42,3 +41,5 @@ export FZF_ALT_C_OPTS="
   --walker-skip .git,node_modules,target
   --preview 'tree -C {}'"
 
+export EDITOR=nvim
+export VISUAL=nvim
