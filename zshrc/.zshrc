@@ -29,7 +29,7 @@ source ~/.powerlevel10k/powerlevel10k.zsh-theme
 
 source ~/.zsh/init.zsh
 
-[[ ! -f ~/.zshenv]] || source ~/.zshenv
+[ -f ~/.zshenv ] && source ~/.zshenv
 
 
 export FZF_CTRL_T_OPTS="
