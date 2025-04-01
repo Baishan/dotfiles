@@ -44,7 +44,7 @@ export FZF_ALT_C_OPTS="
 export EDITOR=nvim
 export VISUAL=nvim
 
-export SAVEHIST=10000
+export SAVEHIST=100000
 export HISTFILE=~/.zsh_history
 
 setopt share_history
