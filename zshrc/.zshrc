@@ -43,3 +43,14 @@ export FZF_ALT_C_OPTS="
 
 export EDITOR=nvim
 export VISUAL=nvim
+
+export SAVEHIST=10000
+export HISTFILE=~/.zsh_history
+
+setopt share_history
+
+autoload edit-command-line
+zle -N edit-command-line
+bindkey '^X^e' edit-command-line
+
+
