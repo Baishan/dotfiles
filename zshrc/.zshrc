@@ -15,6 +15,7 @@ fpath=(${ASDF_DIR}/completions $fpath)
 alias vim='nvim'
 alias cat=batcat
 alias czf='fzf --preview "batcat --color=always --style=numbers --line-range=:500 {}"'
+alias ls='ls --color'
 
 if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
   exec tmux
