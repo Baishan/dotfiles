@@ -6,14 +6,15 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 alias vim=nvim
-. $HOME/.asdf/asdf.sh
+. $(brew --prefix asdf)/libexec/asdf.sh
+
 # append completions to fpath
 fpath=(${ASDF_DIR}/completions $fpath)
 # # initialise completions with ZSH's compinit
 # autoload -Uz compinit && compinit
 
 alias vim='nvim'
-alias cat=batcat
+alias cat=bat
 alias czf='fzf --preview "batcat --color=always --style=numbers --line-range=:500 {}"'
 alias ls='ls --color'
 
@@ -22,12 +23,11 @@ if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] &&
 fi
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-source ~/.powerlevel10k/powerlevel10k.zsh-theme
-
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+source <(fzf --zsh)
 source ~/.zsh/init.zsh
 
 [ -f ~/.zshenv ] && source ~/.zshenv
@@ -55,3 +55,4 @@ zle -N edit-command-line
 bindkey '^X^e' edit-command-line
 
 
+source ~/powerlevel10k/powerlevel10k.zsh-theme
